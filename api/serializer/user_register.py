@@ -14,6 +14,8 @@ from ..services.user_register import UserProfiles
 
 from ..models import Auth, User, Profile
 
+from .empresa import EmpresaSerializer
+
 
 USER = get_user_model()
 
@@ -41,11 +43,12 @@ class UserRegisterSerializer(serializers.ModelSerializer):
     address = serializers.CharField(required=True)
     first_name = serializers.CharField(required=True)
     last_name = serializers.CharField(required=True)
+    empresa = EmpresaSerializer(read_only=True)
 
     class Meta:
         model = User
         fields = ['email', 'username', 'password', 'profile', 'cellphone', 'departamento', 'ciudad', 'pais', 'address',
-        'is_activate', 'first_name', 'last_name']
+        'is_activate', 'first_name', 'last_name', 'empresa']
 
 
     def create(self, validated_data, profile):

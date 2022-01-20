@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'useit.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'useit',
+        'NAME': 'prueba',
         'USER': 'postgres',
         'PASSWORD': '12345',
         'HOST': 'localhost',

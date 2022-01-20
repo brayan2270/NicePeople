@@ -12,7 +12,7 @@ from django.utils import timezone
 
 from ...serializer.user_register import UserRegisterSerializer
 
-from ...models import ActivateUser, User
+from ...models import ActivateUser, User, Empresa
 
 from ...helpers.profile_names import ADMINISTRATOR, ENTERPRISE_ADMINISTRATOR, COMPANY_EMPLOYEE
 from ...helpers.token import TokenHandler
@@ -42,6 +42,9 @@ class UserRegisterView(APIView, TokenHandler):
 
         request.data['username'] = request.data['email']
         request.data['is_activate'] = False
+
+        
+
         serializer = self.serializer_class(data=request.data)
 
         if not serializer.is_valid():
@@ -51,6 +54,8 @@ class UserRegisterView(APIView, TokenHandler):
                 'data': serializer.errors
             }, status=status.HTTP_400_BAD_REQUEST)
 
+
+        request.data['empresa'] = Empresa.objects.filter(pk=request.data['empresa']).first()
 
         profile = request.data["profile"]
         capture = request.data

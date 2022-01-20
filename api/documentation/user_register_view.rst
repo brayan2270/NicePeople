@@ -21,6 +21,7 @@ Autentica al usuario y Crea el usuario.
 :ciudad: **(string)** Ciudad
 :pais: **(string)** Pais
 :address: **(string)** Direccion
+:empresa: **(string)** pk de la empresa
 
 
 **Ejemplo de campo profile**
@@ -50,6 +51,7 @@ los perfiles estaran creados con una base de datos de Postgres que se enviara ad
         "ciudad": "Pereira",
         "pais": "Colombia",
         "address": "prueba direccion"
+        "empresa": 1
     }
 
 **Ejemplos de respuesta**
